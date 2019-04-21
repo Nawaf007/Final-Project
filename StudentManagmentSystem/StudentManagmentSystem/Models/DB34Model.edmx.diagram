@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4a0e52562073455d917b2669816810cd" Name="Diagram1" ZoomLevel="81">
+        <EntityTypeShape EntityType="DB34Model.AspNetRole" Width="1.5" PointX="0.75" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB34Model.AspNetUserClaim" Width="2.375" PointX="5.25" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB34Model.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB34Model.AspNetUser" Width="1.5" PointX="3" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB34Model.Assignment" Width="1.5" PointX="9.75" PointY="31.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB34Model.Attendance" Width="1.5" PointX="3" PointY="32.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB34Model.Course" Width="1.5" PointX="3" PointY="35.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB34Model.Exam" Width="1.5" PointX="12.75" PointY="29.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB34Model.Fee" Width="1.5" PointX="3" PointY="38.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB34Model.Lookup" Width="1.5" PointX="0.75" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB34Model.Section" Width="1.5" PointX="3" PointY="41.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB34Model.SectionCourse" Width="1.5" PointX="7.5" PointY="36" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB34Model.SectionStudent" Width="1.5" PointX="7.5" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB34Model.Student" Width="1.5" PointX="5.25" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB34Model.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB34Model.Teacher" Width="1.5" PointX="5.25" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB34Model.FeesStudent" Width="1.5" PointX="7.5" PointY="29.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB34Model.LookupCategory" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB34Model.Request" Width="1.5" PointX="5.25" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB34Model.SalaryPaid" Width="1.5" PointX="7.5" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB34Model.SCTime" Width="1.5" PointX="12.75" PointY="33.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB34Model.SSAssignment" Width="1.5" PointX="15" PointY="34.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB34Model.SSExam" Width="1.5" PointX="15" PointY="31.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB34Model.StudentAttendance" Width="1.5" PointX="7.5" PointY="25.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB34Model.TeacherAttendance" Width="1.5" PointX="10.5" PointY="27.875" IsExpanded="true" />
+        <AssociationConnector Association="DB34Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="DB34Model.FK_dbo_Teacher_dbo_AspNetUsers_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="DB34Model.FK_Request_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="DB34Model.FK_Student_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="DB34Model.FK_Assignment_Lookup" ManuallyRouted="false" />
+        <AssociationConnector Association="DB34Model.FK_Assignment_SectionCourse" ManuallyRouted="false" />
+        <AssociationConnector Association="DB34Model.FK_SSAssignment_Assignment" ManuallyRouted="false" />
+        <AssociationConnector Association="DB34Model.FK_Attendance_Lookup" ManuallyRouted="false" />
+        <AssociationConnector Association="DB34Model.FK_StudentAttendance_Attendance" ManuallyRouted="false" />
+        <AssociationConnector Association="DB34Model.FK_TeacherAttendance_Attendance" ManuallyRouted="false" />
+        <AssociationConnector Association="DB34Model.FK_Course_Lookup" ManuallyRouted="false" />
+        <AssociationConnector Association="DB34Model.FK_Course_Lookup1" ManuallyRouted="false" />
+        <AssociationConnector Association="DB34Model.FK_SectionCourse_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="DB34Model.FK_Exam_Lookup" ManuallyRouted="false" />
+        <AssociationConnector Association="DB34Model.FK_Exam_SectionCourse" ManuallyRouted="false" />
+        <AssociationConnector Association="DB34Model.FK_SSExam_Exam" ManuallyRouted="false" />
+        <AssociationConnector Association="DB34Model.FK_Fees_Lookup" ManuallyRouted="false" />
+        <AssociationConnector Association="DB34Model.FK_FeesStudent_Fees" ManuallyRouted="false" />
+        <AssociationConnector Association="DB34Model.FK_SalaryPaid_Lookup" ManuallyRouted="false" />
+        <AssociationConnector Association="DB34Model.FK_SCTime_Lookup" ManuallyRouted="false" />
+        <AssociationConnector Association="DB34Model.FK_Section_Lookup" ManuallyRouted="false" />
+        <AssociationConnector Association="DB34Model.FK_StudentAttendance_Lookup" ManuallyRouted="false" />
+        <AssociationConnector Association="DB34Model.FK_TeacherAttendance_Lookup" ManuallyRouted="false" />
+        <AssociationConnector Association="DB34Model.FK_SectionCourse_Section" ManuallyRouted="false" />
+        <AssociationConnector Association="DB34Model.FK_SectionStudent_Section" ManuallyRouted="false" />
+        <AssociationConnector Association="DB34Model.FK_SCTime_SectionCourse" ManuallyRouted="false" />
+        <AssociationConnector Association="DB34Model.FK_SectionCourse_Teacher" ManuallyRouted="false" />
+        <AssociationConnector Association="DB34Model.FK_SectionStudent_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="DB34Model.FK_SSAssignment_SectionStudent" ManuallyRouted="false" />
+        <AssociationConnector Association="DB34Model.FK_SSExam_SectionStudent" ManuallyRouted="false" />
+        <AssociationConnector Association="DB34Model.FK_FeesStudent_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="DB34Model.FK_StudentAttendance_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="DB34Model.FK_SalaryPaid_Teacher" ManuallyRouted="false" />
+        <AssociationConnector Association="DB34Model.FK_TeacherAttendance_Teacher" ManuallyRouted="false" />
+        <AssociationConnector Association="DB34Model.AspNetUserRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="DB34Model.FK_AspNetUsers_Lookup" />
+        <AssociationConnector Association="DB34Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

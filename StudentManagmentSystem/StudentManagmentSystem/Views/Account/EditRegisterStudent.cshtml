@@ -1,0 +1,106 @@
+﻿@model StudentManagmentSystem.Models.EditRegisterViewModel
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2 style="text-align:center; font-weight:bold">@ViewBag.Title</h2>
+
+@using (Html.BeginForm("EditRegisterStudent", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <h4 style="text-align:center; font-weight:bold">Student</h4>
+    <hr />
+    @Html.ValidationSummary()
+    @Html.HiddenFor(m => m.UserName)
+    <div class="form-group">
+        @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Gender, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.Gender, StudentManagmentSystem.Models.AspNetUser.GetGenders(), new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.EnrollementDate, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.EnrollementDate, new { @class = "form-control datepicker" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Save" />
+        </div>
+    </div>
+}
+
+
+@section Scripts {
+
+    <script type="text/javascript">
+        $(window).load(function () {
+            $('#Admin').change(function () {
+                var ddlValue = $(this).val();
+
+                if (ddlValue == parseInt(@ViewBag.Student).toString()) {
+                    // show time div, hide fromTo div
+                    $('#time').show();
+                    $('#from').hide();
+                }
+                else if (ddlValue == parseInt(@ViewBag.Teacher).toString()) {
+                    // show fromTo div, hide time div
+                    $('#from').show();
+                    $('#time').hide();
+                }
+                else
+                {
+                    $('#from').hide();
+                    $('#time').hide();
+                }
+            });
+        });
+        $(document).ready(function () {
+                var ddlValue = $(this).val();
+
+                if (ddlValue == parseInt(@ViewBag.Student).toString()) {
+                    // show time div, hide fromTo div
+                    $('#time').show();
+                    $('#from').hide();
+                }
+                else if (ddlValue == parseInt(@ViewBag.Teacher).toString()) {
+                    // show fromTo div, hide time div
+                    $('#from').show();
+                    $('#time').hide();
+                }
+                else
+                {
+                    $('#from').hide();
+                    $('#time').hide();
+                }
+        });
+    </script>
+    @Scripts.Render("~/bundles/jqueryval")
+
+}
+
