@@ -1,0 +1,44 @@
+﻿@model IEnumerable<StudentManagmentSystem.Models.TeacherAttendance>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 style="text-align:center; font-weight:bold">Teacher Attendance</h2>
+
+<p>
+    @Html.ActionLink("Back to Attendance", "Index", "Attendance") | @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Teacher.AspNetUser.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Attendance.Date)
+        </th>
+        <th>
+            Status
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Teacher.AspNetUser.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Attendance.Date.Month)/@Html.DisplayFor(modelItem => item.Attendance.Date.Day)/@Html.DisplayFor(modelItem => item.Attendance.Date.Year)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lookup.Values)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
