@@ -1,0 +1,42 @@
+﻿@model StudentManagmentSystem.Models.StudentAttendance
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>StudentAttendance</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Attendance.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Attendance.Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lookup.Category)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lookup.Category)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.RegistrationNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student.RegistrationNo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
