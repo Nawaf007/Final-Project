@@ -1,0 +1,73 @@
+﻿@model StudentManagmentSystem.Models.RegisterViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2 style="text-align:center; font-weight:bold">Details</h2>
+
+<div>
+    <h4 style="text-align:center; font-weight:bold">Student</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RegistrationNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegistrationNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EnrollementDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EnrollementDate)
+        </dd>
+
+        <dt>
+            Gender
+        </dt>
+
+        <dd>
+            @ViewBag.Gender
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "EditRegisterStudent", "Account", new { idd = Model.Id }, null) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

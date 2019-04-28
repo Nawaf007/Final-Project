@@ -1,0 +1,82 @@
+﻿@model StudentManagmentSystem.Models.SSAssignment
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+@if (ViewBag.UserType == "Student")
+{
+    <h2 style="text-align:center; font-weight:bold">Submit</h2>
+    <h4 style="text-align:center; font-weight:bold">Assignment</h4>
+}
+else
+{
+    <h2 style="text-align:center; font-weight:bold">Edit</h2>
+    <h4 style="text-align:center; font-weight:bold">Student Assignment</h4>
+}
+
+@using (Html.BeginForm("Edit", "StudentAssignment", new { idsc = ViewBag.idsc, ids = ViewBag.ids, idc = ViewBag.idc, ida = ViewBag.ida, idss = ViewBag.idss }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true)
+        <a>
+            @ViewBag.Error
+        </a>
+        @Html.DropDownList("SSId", null, String.Empty, new { @class = "form-control", style = "visibility:hidden" })
+
+        @if(ViewBag.UserType != "Student")
+        {
+            <div class="form-group">
+                @Html.LabelFor(model => model.ObtainedMarks, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.ObtainedMarks, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ObtainedMarks)
+                </div>
+            </div>
+        }
+        else
+        {
+            @Html.TextBoxFor(model => model.ObtainedMarks, new { @class = "form-control" , style = "visibility:hidden"})
+        }
+
+        <div>
+            <label for="file" class="control-label col-md-12">Upload File:</label>
+            <input type="file" name="file" id="file" class="control-label col-md-12" />
+        </div>
+
+        @Html.DropDownList("AssignmentId", null, String.Empty, new { @class = "form-control", style = "visibility:hidden" })
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model=> model.FilePath)
+
+        @if(ViewBag.UserType == "Student")
+        {
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Submit" class="btn btn-default" />
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        }
+    </div>
+}
+
+<div>
+    @if(ViewBag.UserType == "Student")
+    {
+        @Html.ActionLink("Back to List", "Index", "Assignment", new { idsc = ViewBag.idsc, ids = ViewBag.ids, idc = ViewBag.idc, ida = ViewBag.ida, idss = ViewBag.idss }, null)
+    }
+    else
+    {
+        @Html.ActionLink("Back to List", "Index", new { idsc = ViewBag.idsc, ids = ViewBag.ids, idc = ViewBag.idc, ida = ViewBag.ida, idss = ViewBag.idss })
+    }
+</div>
