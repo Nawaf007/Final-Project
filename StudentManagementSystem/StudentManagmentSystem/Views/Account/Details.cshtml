@@ -1,0 +1,73 @@
+﻿@model StudentManagmentSystem.Models.AspNetUser
+
+@{
+    ViewBag.Title = "DetailsAccounts";
+}
+
+<h2 style="text-align:center; font-weight:bold">Account Details</h2>
+
+<div>
+    <h4 style="text-align:center; font-weight:bold">User</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        @if (Html.DisplayFor(model => model.Teacher).ToString() != "")
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.Teacher.Salary)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Teacher.Salary)
+            </dd>
+        }
+        @if (Html.DisplayFor(model => model.Student).ToString() != "")
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.Student.RegistrationNo)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Student.RegistrationNo)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Student.EnrollementDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Student.EnrollementDate)
+            </dd>
+        }
+
+    </dl>
+</div>
