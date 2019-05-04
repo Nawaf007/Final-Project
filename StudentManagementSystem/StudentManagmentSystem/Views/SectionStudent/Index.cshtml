@@ -1,0 +1,61 @@
+﻿@model IEnumerable<StudentManagmentSystem.Models.SectionStudent>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 style="text-align:center; font-weight:bold">Section Student</h2>
+
+<p>
+    @if (ViewBag.ids != null)
+    {
+        @Html.ActionLink("Back to Section", "Index", "Section")
+    }
+    @if (ViewBag.UserType == "Admin")
+    {
+        <a> | </a> @Html.ActionLink("Create New", "Create", new { ids = ViewBag.ids })
+    }
+    @if (ViewBag.UserType == "Admin" || ViewBag.UserType == "Teacher")
+    {
+         <a> | </a> <a href="@Url.Action("AttendanceReport", new { ids = ViewBag.ids})"> Attendance Report </a>
+    }
+    <a> | </a> <a href="@Url.Action("Datesheet", new { ids = ViewBag.ids})">Datesheet</a>
+    <a> | </a> <a href="@Url.Action("Timetable", new { ids = ViewBag.ids})">Timetable</a>
+</p>
+<table class="table">
+    <tr>
+        @if(ViewBag.ids == null)
+        {
+            <th>
+                Section Name
+            </th>
+        }
+        <th>
+            @Html.DisplayNameFor(model => model.Student.RegistrationNo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        @if(ViewBag.ids == null)
+        {
+            <td>
+                @Html.DisplayFor(modelItem => item.Section.Name)
+            </td>
+        }
+        <td>
+            @Html.DisplayFor(modelItem => item.Student.RegistrationNo)
+        </td>
+        <td>
+            @if(ViewBag.UserType == "Admin")
+            {
+                @Html.ActionLink("Exam", "Index", "StudentSection", new { idss = item.Id, ids = ViewBag.ids }, null) <a> | </a>
+                @Html.ActionLink("Assignment", "Index", "StudentAssignment", new { idss = item.Id, ids = ViewBag.ids }, null)
+                <a> | </a> @Html.ActionLink("Delete", "Delete", new { id=item.Id, ids = ViewBag.ids })
+            }
+        </td>
+    </tr>
+}
+
+</table>

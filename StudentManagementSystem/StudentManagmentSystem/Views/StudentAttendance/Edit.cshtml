@@ -1,0 +1,40 @@
+﻿@model StudentManagmentSystem.Models.StudentAttendance
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2 style="text-align:center; font-weight:bold">Edit</h2>
+
+@using (Html.BeginForm("Edit", "StudentAttendance", new { ida = ViewBag.ida, idt = ViewBag.idt }, FormMethod.Post, null))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4 style="text-align:center; font-weight:bold">Student Attendance</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.AttendanceId)
+        @Html.HiddenFor(model => model.StudentId)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Status, "Status", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Status", null, String.Empty, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Status)
+            </div>
+        </div>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", new { ida = ViewBag.ida, idt = ViewBag.idt })
+</div>

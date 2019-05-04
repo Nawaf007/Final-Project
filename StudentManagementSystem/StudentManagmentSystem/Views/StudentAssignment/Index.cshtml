@@ -1,0 +1,114 @@
+﻿@model IEnumerable<StudentManagmentSystem.Models.SSAssignment>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 style="text-align:center; font-weight:bold">Student Assignment</h2>
+
+<p>
+    @if(ViewBag.UserType == "Admin" || ViewBag.UserType == "Teacher")
+    {
+        if (ViewBag.ida != null)
+        {
+            @Html.ActionLink("Back to Assignment", "Index", "Assignment", new { ids = ViewBag.ids, idc = ViewBag.idc, idsc = ViewBag.idsc }, null) <a> | </a> @Html.ActionLink("Create New", "Create", new { idsc = ViewBag.idsc, ids = ViewBag.ids, idc = ViewBag.idc, ida = ViewBag.ida, idss = ViewBag.idss })
+        }
+        if (ViewBag.idss != null)
+        {
+            @Html.ActionLink("Back to Student", "Index", "SectionStudent", new { ids = ViewBag.ids }, null)
+        }
+        
+    }
+</p>
+<table class="table">
+    <tr>
+        @if (ViewBag.idss == null)
+        {
+            <th>
+                @Html.DisplayNameFor(model => model.SectionStudent.Student.RegistrationNo)
+            </th>
+        }
+        @if(ViewBag.ida == null)
+        {
+            if(ViewBag.ids != null)
+            {
+                <th>
+                    Course
+                </th>
+            }
+            if(ViewBag.idc != null)
+            {
+                <th>
+                    Section
+                </th>
+            }
+            <th>
+                @Html.DisplayNameFor(model => model.Assignment.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Assignment.TotalMarks)
+            </th>
+        }
+        <th>
+            @Html.DisplayNameFor(model => model.ObtainedMarks)
+        </th>
+        <th>
+           Solution
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        @if (ViewBag.idss == null)
+        {
+            <td>
+                @Html.DisplayFor(modelItem => item.SectionStudent.Student.RegistrationNo)
+            </td>
+        }
+        @if (ViewBag.ida == null)
+        {
+            if(ViewBag.ids != null)
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.Assignment.SectionCourse.Course.Title)
+                </td>
+            }
+            if(ViewBag.idc != null)
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.Assignment.SectionCourse.Section.Name)
+                </td>
+            }
+            <td>
+                @Html.DisplayFor(modelItem => item.Assignment.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Assignment.TotalMarks)
+            </td>
+        }
+        <td>
+            @Html.DisplayFor(modelItem => item.ObtainedMarks)
+        </td>
+        <td>
+            @if (item.FilePath.ToString() != " ")
+            {
+                <a href="@Url.Action("Download", new { @path = item.FilePath})">
+                    Download
+                </a>
+            }
+            else
+            {
+                <a>
+                    No File
+                </a>
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id, idsc = ViewBag.idsc, ids = ViewBag.ids, idc = ViewBag.idc, ida = ViewBag.ida, idss = ViewBag.idss }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id, idsc = ViewBag.idsc, ids = ViewBag.ids, idc = ViewBag.idc, ida = ViewBag.ida, idss = ViewBag.idss })
+        </td>
+    </tr>
+}
+
+</table>

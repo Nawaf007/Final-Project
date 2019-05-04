@@ -1,0 +1,93 @@
+﻿@model IEnumerable<StudentManagmentSystem.Models.SSExam>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 style="text-align:center; font-weight:bold">Student Exam</h2>
+
+<p>
+    @if (ViewBag.ide != null)
+    {
+        @Html.ActionLink("Back to Exam", "Index", "Exam", new { ids = ViewBag.ids, idc = ViewBag.idc, idsc = ViewBag.idsc }, null)  <a> | </a> @Html.ActionLink("Create New", "Create", new { idsc = ViewBag.idsc, ids = ViewBag.ids, idc = ViewBag.idc, ide = ViewBag.ide, idss = ViewBag.idss })
+    }
+    @if (ViewBag.idss != null)
+    {
+        @Html.ActionLink("Back to Student", "Index", "SectionStudent", new { ids = ViewBag.ids}, null)
+    }
+</p>
+<table class="table">
+    <tr>
+        @if(ViewBag.ide == null)
+        {
+            if(ViewBag.ids != null)
+            {
+                <th>
+                    Course
+                </th>
+            }
+            if(ViewBag.idc != null)
+            {
+                <th>
+                    Section
+                </th>
+            }
+            <th>
+                Exam
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Exam.TotalMarks)
+            </th>
+        }
+        @if(ViewBag.idss == null)
+        {
+            <th>
+                @Html.DisplayNameFor(model => model.SectionStudent.Student.RegistrationNo)
+            </th>
+        }
+        <th>
+            @Html.DisplayNameFor(model => model.ObtainedMarks)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        @if(ViewBag.ide == null)
+        {
+            if(ViewBag.ids != null)
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.Exam.SectionCourse.Course.Title)
+                </td>
+            }
+            if(ViewBag.idc != null)
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.Exam.SectionCourse.Section.Name)
+                </td>
+            }
+            <td>
+                @Html.DisplayFor(modelItem => item.Exam.Lookup.Values)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Exam.TotalMarks)
+            </td>
+        }
+        @if(ViewBag.idss == null)
+        {
+            <td>
+                @Html.DisplayFor(modelItem => item.SectionStudent.Student.RegistrationNo)
+            </td>
+        }
+        <td>
+            @Html.DisplayFor(modelItem => item.ObtainedMarks)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id, idsc = ViewBag.idsc, ids = ViewBag.ids, idc = ViewBag.idc, ide = ViewBag.ide, idss = ViewBag.idss }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id, idsc = ViewBag.idsc, ids = ViewBag.ids, idc = ViewBag.idc, ide = ViewBag.ide, idss = ViewBag.idss })
+        </td>
+    </tr>
+}
+
+</table>
