@@ -1,0 +1,42 @@
+﻿@model StudentManagmentSystem.Models.SalaryPaid
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SalaryPaid</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lookup.Category)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lookup.Category)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Teacher.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Teacher.Id)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

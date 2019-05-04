@@ -1,0 +1,40 @@
+﻿@model StudentManagmentSystem.Models.SalaryPaid
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm("Create", "SalaryPaid", new { idt = ViewBag.idt }, FormMethod.Post, null))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>SalaryPaid</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.DropDownList("TeacherId", null, String.Empty, new { @class = "form-control", style = "visibility:hidden" })
+        @Html.HiddenFor(model => model.Date)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Status, "Status", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Status", null, String.Empty, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Status)
+            </div>
+        </div>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", new { idt = ViewBag.idt })
+</div>

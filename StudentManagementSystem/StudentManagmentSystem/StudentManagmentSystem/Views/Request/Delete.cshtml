@@ -1,0 +1,58 @@
+﻿@model StudentManagmentSystem.Models.Request
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2 style="text-align:center; font-weight:bold">Delete</h2>
+<div>
+    <h4 style="text-align:center; font-weight:bold">Request</h4>
+    <h3>Are you sure you want to delete this?</h3>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Topic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Topic)
+        </dd>
+
+        @if (@Html.DisplayFor(model => model.AspNetUser1.Id).ToString() != "")
+        {
+            if(ViewBag.UserType == "Admin")
+            {
+                <dt>
+                    Acknowledged By
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.AspNetUser1.UserName)
+                </dd>
+                <dt>
+                    Requested From
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.AspNetUser.UserName)
+                </dd>
+            }
+            else
+            {
+                <dt>
+                    Acknowledged By
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.AspNetUser1.FirstName) @Html.DisplayFor(model => model.AspNetUser1.LastName)
+                </dd>
+            }
+        }
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

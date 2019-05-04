@@ -1,0 +1,50 @@
+﻿@model StudentManagmentSystem.Models.FeesStudent
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>FeesStudent</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AmountPaid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AmountPaid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SubmitDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubmitDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fee.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fee.Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.RegistrationNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student.RegistrationNo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

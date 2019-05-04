@@ -1,0 +1,103 @@
+﻿@model IEnumerable<StudentManagmentSystem.Models.SectionCourse>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 style="text-align:center; font-weight:bold">Section Course</h2>
+
+<p>
+    @if(ViewBag.ids != null)
+    {
+        @Html.ActionLink("Back to Section", "Index", "Section") 
+    }
+    @if(ViewBag.idc != null)
+    {
+        @Html.ActionLink("Back to Course", "Index", "Course")
+    }
+    @if (ViewBag.idt != null)
+    {
+        @Html.ActionLink("Back to Teacher", "Index", "Teacher")
+    }
+    @if(ViewBag.UserType == "Admin")
+    {
+        <a> | </a> @Html.ActionLink("Create New", "Create", new { idt = ViewBag.idt, ids = ViewBag.ids, idc = ViewBag.idc })
+    }
+</p>
+<table class="table">
+    <tr>
+        @if(ViewBag.idt == null)
+        {
+            if(ViewBag.UserType == "Admin")
+            {
+                <th>
+                    Teacher User Name
+                </th>
+            }
+            if(ViewBag.UserType == "Student")
+            {
+                <th>
+                    Teacher Name
+                </th>
+            }
+        }
+        @if(ViewBag.idc == null)
+        {
+            <th>
+                Course Title
+            </th>
+        }
+        @if(ViewBag.ids == null)
+        {
+            <th>
+                Section Name
+            </th>
+        }
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        @if(ViewBag.idt == null)
+        {
+            if(ViewBag.UserType == "Admin")
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.Teacher.AspNetUser.UserName)
+                </td>
+            }
+            if(ViewBag.UserType == "Student")
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.Teacher.AspNetUser.FirstName) @Html.DisplayFor(modelItem => item.Teacher.AspNetUser.LastName) 
+                </td>
+            }
+        }
+        @if(ViewBag.idc == null)
+        {
+            <td>
+                @Html.DisplayFor(modelItem => item.Course.Title)
+            </td>
+        }
+        @if(ViewBag.ids == null)
+        {
+            <td>
+                @Html.DisplayFor(modelItem => item.Section.Name)
+            </td>
+        }
+        <td>
+            @if(ViewBag.UserType == "Admin")
+            {
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id, idt = ViewBag.idt, ids = ViewBag.ids, idc = ViewBag.idc }) <a> | </a>
+            }
+            @Html.ActionLink("Time", "Index", "SCTime", new { idsc = item.Id, ids = ViewBag.ids, idc = ViewBag.idc }, null) | 
+            @Html.ActionLink("Exam", "Index", "Exam", new { idsc = item.Id, ids = ViewBag.ids, idc = ViewBag.idc }, null) | 
+            @Html.ActionLink("Assignment", "Index", "Assignment", new { idsc = item.Id, ids = ViewBag.ids, idc = ViewBag.idc }, null)
+            @if(ViewBag.UserType == "Admin")
+            {
+                <a> | </a> @Html.ActionLink("Delete", "Delete", new { id = item.Id, idt = ViewBag.idt, ids = ViewBag.ids, idc = ViewBag.idc })
+            }
+        </td>
+    </tr>
+}
+</table>

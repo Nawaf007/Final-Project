@@ -1,0 +1,76 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<div class="row">
+    <div class="col-lg-6 col-md-12 col-sm-12">
+        <div class="card card-stats">
+            <div class="card-header card-header-warning card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">content_copy</i>
+                </div>
+                <p class="card-category">Active Courses</p>
+                <h3 class="card-title">
+                    @ViewBag.ActiveCourses/@ViewBag.TotalCourses
+                    <small></small>
+                </h3>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <i class="material-icons text-danger">local_offer</i>
+                    <a href=@Url.Action("Index", "Course", null)>Got to Courses</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-12 col-sm-12">
+        <div class="card card-stats">
+            <div class="card-header card-header-success card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">store</i>
+                </div>
+                <p class="card-category">Salary Paid</p>
+                <h3 class="card-title">$@ViewBag.SalaryPaid</h3>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <i class="material-icons">date_range</i> Updated Now
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+ <div class="row">
+     <div class="col-lg-6 col-md-12 col-sm-12">
+         <div class="card card-stats">
+             <div class="card-header card-header-danger card-header-icon">
+                 <div class="card-icon">
+                     <i class="material-icons">info_outline</i>
+                 </div>
+                 <p class="card-category">Pending Requests</p>
+                 <h3 class="card-title">@ViewBag.Requests</h3>
+             </div>
+             <div class="card-footer">
+                 <div class="stats">
+                     <i class="material-icons">local_offer</i>
+                     <a href=@Url.Action("Index", "Request", null)>Got to Requests</a>
+                 </div>
+             </div>
+         </div>
+     </div>
+     <div class="col-lg-6 col-md-12 col-sm-12">
+         <div class="card card-stats">
+             <div class="card-header card-header-info card-header-icon">
+                 <div class="card-icon">
+                     <i class="fa fa-twitter"></i>
+                 </div>
+                 <p class="card-category">Users</p>
+                 <h3 class="card-title">@ViewBag.Users</h3>
+             </div>
+             <div class="card-footer">
+                 <div class="stats">
+                     <i class="material-icons">update</i> Just Updated
+                 </div>
+             </div>
+         </div>
+     </div>
+</div>

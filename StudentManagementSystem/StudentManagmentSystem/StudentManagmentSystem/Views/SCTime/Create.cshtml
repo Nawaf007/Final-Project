@@ -1,0 +1,59 @@
+﻿@model StudentManagmentSystem.Models.SCTime
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2 style="text-align:center; font-weight:bold">Create</h2>
+
+@using (Html.BeginForm("Create", "SCTime", new { idsc = ViewBag.idsc, ids = ViewBag.ids, idc = ViewBag.idc }, FormMethod.Post, null)) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4 style="text-align:center; font-weight:bold">Section Course Time</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        @if(ViewBag.idsc == null)
+        {
+            <div class="form-group">
+                @Html.LabelFor(model => model.SectionId, "SectionId", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("SectionId", null, String.Empty, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.SectionId)
+                </div>
+            </div>
+        }
+        else
+        {
+            @Html.DropDownList("SectionId", null, String.Empty, new { @class = "form-control", style = "visibility:hidden" })
+        }
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DayOfWeek, "Day", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("DayOfWeek", null, String.Empty, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.DayOfWeek)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TimeOfDay, "Time", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.TimeOfDay, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.TimeOfDay)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", new { idsc = ViewBag.idsc, ids = ViewBag.ids, idc = ViewBag.idc })
+</div>

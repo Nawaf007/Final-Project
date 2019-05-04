@@ -1,0 +1,60 @@
+﻿@model IEnumerable<StudentManagmentSystem.Models.SalaryPaid>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 style="text-align:center; font-weight:bold">Salary</h2>
+
+<p>
+    @if(ViewBag.idt != null && ViewBag.UserType == "Admin")
+    {
+        @Html.ActionLink("Create New", "Create", new { idt = ViewBag.idt}) <a> | </a> 
+    }
+    else if (ViewBag.UserType == "Admin")
+    {
+        <a href="@Url.Action("NRSReport")">Not Recieved Salay Report </a>
+    }
+</p>
+<table class="table">
+    <tr>
+        @if(ViewBag.idt == null && ViewBag.UserType != "Teacher")
+        {
+            <th>
+                Teacher User Name
+            </th>
+        }
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            Status
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        @if (ViewBag.idt == null && ViewBag.UserType != "Teacher")
+        {
+            <td>
+                @Html.DisplayFor(modelItem => item.Teacher.AspNetUser.UserName)
+            </td>
+        }
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lookup.Values)
+        </td>
+        @if (ViewBag.idt != null && ViewBag.UserType == "Admin")
+        {
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Id, idt = ViewBag.idt }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.Id, idt = ViewBag.idt })
+            </td>
+        }
+    </tr>
+}
+
+</table>

@@ -1,0 +1,61 @@
+﻿@model IEnumerable<StudentManagmentSystem.Models.SCTime>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 style="text-align:center; font-weight:bold">Time Table</h2>
+<table class="table">
+    <tr>
+        <th>
+            Section Name
+        </th>
+        @if(ViewBag.UserType != "Teacher")
+        {
+            <th>
+                Teacher Name
+            </th>
+        }
+        <th>
+            Course
+        </th>
+        <th>
+            Class
+        </th>
+        <th>
+            Day
+        </th>
+        <th>
+            Time
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SectionCourse.Section.Name)
+            </td>
+
+            @if(ViewBag.UserType != "Teacher")
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.SectionCourse.Teacher.AspNetUser.FirstName) @Html.DisplayFor(modelItem => item.SectionCourse.Teacher.AspNetUser.LastName)
+                </td>
+            }
+            <td>
+                @Html.DisplayFor(modelItem => item.SectionCourse.Course.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SectionCourse.Course.Lookup1.Values)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lookup.Values)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeOfDay.TimeOfDay)
+            </td>
+        </tr>
+    }
+
+</table>

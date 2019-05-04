@@ -1,0 +1,57 @@
+﻿@model StudentManagmentSystem.Models.Section
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2 style="text-align:center; font-weight:bold">Create</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4 style="text-align:center; font-weight:bold">Section</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Name, new { style = "width:100%", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaxCount, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.MaxCount, new { style = "width:100%", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.MaxCount)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Class, "Class", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Class", null, String.Empty, new { style = "width: 100%;", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Class)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

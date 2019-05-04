@@ -1,0 +1,70 @@
+﻿@model IEnumerable<StudentManagmentSystem.Models.FeesStudent>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 style="text-align:center; font-weight:bold">Fee Student</h2>
+
+<p>
+    @if (ViewBag.Shows != true)
+    {
+        @Html.ActionLink("Back to Student", "Index", "Student")
+    }
+    @if (ViewBag.Showf != true)
+    {
+        @Html.ActionLink("Back to Fees", "Index", "Fees")
+    }
+    | @Html.ActionLink("Create New", "Create", new { idf = ViewBag.idf, ids = ViewBag.ids })
+</p>
+<table class="table">
+    <tr>
+        @if (ViewBag.Showf == true)
+        {
+            <th>
+                @Html.DisplayNameFor(model => model.Fee.Name)
+            </th>
+        }
+        @if (ViewBag.Shows == true)
+        {
+            <th>
+                @Html.DisplayNameFor(model => model.Student.RegistrationNo)
+            </th>
+        }
+        <th>
+            @Html.DisplayNameFor(model => model.AmountPaid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubmitDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        @if (ViewBag.Showf == true)
+        {
+            <td>
+                @Html.DisplayFor(modelItem => item.Fee.Id)
+            </td>
+        }
+        @if (ViewBag.Shows == true)
+        {
+            <td>
+                @Html.DisplayFor(modelItem => item.Student.RegistrationNo)
+            </td>
+        }
+        <td>
+            @Html.DisplayFor(modelItem => item.AmountPaid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubmitDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id, idf = ViewBag.idf, ids = ViewBag.ids }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id, idf = ViewBag.idf, ids = ViewBag.ids })
+        </td>
+    </tr>
+}
+
+</table>

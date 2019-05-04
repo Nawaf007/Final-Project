@@ -1,0 +1,55 @@
+﻿@model StudentManagmentSystem.Models.FeesStudent
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2 style="text-align:center; font-weight:bold">Delete</h2>
+<div>
+    <h4 style="text-align:center; font-weight:bold">FeesStudent</h4>
+    <h3>Are you sure you want to delete this?</h3>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Fee.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fee.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.RegistrationNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student.RegistrationNo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AmountPaid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AmountPaid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SubmitDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubmitDate)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm("Delete", "FeeStudent", new { idf = ViewBag.idf, ids = ViewBag.ids }, FormMethod.Post, null))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index", new { ids = ViewBag.ids, idf = ViewBag.idf })
+        </div>
+    }
+</div>

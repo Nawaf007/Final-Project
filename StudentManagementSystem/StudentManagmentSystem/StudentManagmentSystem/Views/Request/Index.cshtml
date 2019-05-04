@@ -1,0 +1,88 @@
+﻿@model IEnumerable<StudentManagmentSystem.Models.Request>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 style="text-align:center; font-weight:bold">Requests</h2>
+
+<p>
+    @if(ViewBag.UserType == "Teacher" || ViewBag.UserType == "Student")
+    {
+        @Html.ActionLink("Create New", "Create")
+    }
+    else
+    {
+         <a href="@Url.Action("RequestReport")">PDF Report </a>
+    }
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Topic)
+        </th>
+        @if(ViewBag.UserType == "Admin")
+        {
+            <th>
+                Requested From
+            </th>
+        }
+        <th>
+            Acknowledged By
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Topic)
+        </td>
+        @if (@Html.DisplayFor(modelItem => item.AspNetUser1.Id).ToString() != "")
+        {
+            if(ViewBag.UserType == "Admin")
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.AspNetUser.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AspNetUser1.UserName)
+                </td>
+            }
+            else
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.AspNetUser1.FirstName) @Html.DisplayFor(modelItem => item.AspNetUser1.LastName)
+                </td>
+            }
+            
+        }
+        else
+        {
+            if(ViewBag.UserType == "Admin")
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.AspNetUser.UserName)
+                </td>
+                <td>
+                    None
+                </td>
+            }
+            else
+            {
+                <td>
+                    None
+                </td>
+            }
+        }
+        <td>
+            @Html.ActionLink("Details", "Details", new { id=item.Id })
+            @if(ViewBag.UserType == "Admin")
+            {
+                <a> | </a> @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            }
+        </td>
+    </tr>
+}
+
+</table>

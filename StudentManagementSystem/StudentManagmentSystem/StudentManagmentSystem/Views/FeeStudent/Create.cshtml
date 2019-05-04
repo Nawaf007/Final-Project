@@ -1,0 +1,74 @@
+﻿@model StudentManagmentSystem.Models.FeesStudent
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2 style="text-align:center; font-weight:bold">Create</h2>
+
+@using (Html.BeginForm("Create", "FeeStudent", new { idf = ViewBag.idf, ids = ViewBag.ids }, FormMethod.Post, null)) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4 style="text-align:center; font-weight:bold">Fees Student</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        @if(ViewBag.Showf == true)
+        {
+            <div class="form-group">
+                @Html.LabelFor(model => model.FeeId, "Fee Name", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("FeeId", null, String.Empty, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.FeeId)
+                </div>
+            </div>
+        }
+        else
+        {
+            @Html.DropDownList("FeeId", null, String.Empty, new { @class = "form-control", style = "visibility:hidden" })
+        }
+        @if(ViewBag.Shows == true)
+        {
+            <div class="form-group">
+                @Html.LabelFor(model => model.StudentId, "Registration No.", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("StudentId", null, String.Empty, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.StudentId)
+                </div>
+            </div>
+        }
+        else
+        {
+            @Html.DropDownList("StudentId", null, String.Empty, new { @class = "form-control", style = "visibility:hidden" })
+        }
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AmountPaid, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.AmountPaid, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.AmountPaid)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SubmitDate, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.SubmitDate, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.SubmitDate)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", new { ids = ViewBag.ids, idf = ViewBag.idf })
+</div>

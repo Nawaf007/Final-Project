@@ -1,0 +1,63 @@
+﻿@model IEnumerable<StudentManagmentSystem.Models.SCTime>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 style="text-align:center; font-weight:bold">Section Course Time</h2>
+
+<p>
+    @if (ViewBag.idsc != null)
+    {
+        @Html.ActionLink("Back to Section Course", "Index", "SectionCourse", new { ids = ViewBag.ids, idc = ViewBag.idc }, null)
+    }
+    @if(ViewBag.UserType == "Admin")
+    {
+        <a> | </a> @Html.ActionLink("Create New", "Create", new { idsc = ViewBag.idsc, ids = ViewBag.ids, idc = ViewBag.idc} )   
+    }
+</p>
+<table class="table">
+    <tr>
+        @if (ViewBag.idsc == null)
+        {
+            <th>
+                Section Name
+            </th>
+        }
+        <th>
+            Day
+        </th>
+        <th>
+            Time
+        </th>
+        @if (ViewBag.UserType == "Admin")
+        {
+            <th></th>
+        }
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        @if (ViewBag.idsc == null)
+        {
+            <td>
+                @Html.DisplayFor(modelItem => item.SectionCourse.Section.Name)
+            </td>
+        }
+        <td>
+            @Html.DisplayFor(modelItem => item.Lookup.Values)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TimeOfDay.TimeOfDay)
+        </td>
+        @if (ViewBag.UserType == "Admin")
+        {
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id, idsc = ViewBag.idsc, ids = ViewBag.ids, idc = ViewBag.idc }) | 
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id, idsc = ViewBag.idsc, ids = ViewBag.ids, idc = ViewBag.idc })
+            </td>
+        }
+    </tr>
+}
+
+</table>

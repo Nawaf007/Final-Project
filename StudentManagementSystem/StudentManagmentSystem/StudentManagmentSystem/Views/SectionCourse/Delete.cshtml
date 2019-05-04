@@ -1,0 +1,49 @@
+﻿@model StudentManagmentSystem.Models.SectionCourse
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2 style="text-align:center; font-weight:bold">Delete</h2>
+
+
+<div>
+    <h4 style="text-align:center; font-weight:bold">SectionCourse</h4>
+    <h3>Are you sure you want to delete this?</h3>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Course Title
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Course.Title)
+        </dd>
+
+        <dt>
+            Section Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Section.Name)
+        </dd>
+
+        <dt>
+            Teacher User Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Teacher.AspNetUser.UserName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index", new { idc = ViewBag.idc, ids = ViewBag.ids, idt = ViewBag.idt })
+        </div>
+    }
+</div>
